@@ -6,6 +6,8 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Android.Content;
+using MultiplePages.Resources.layout;
 
 namespace MultiplePages
 {
@@ -26,7 +28,11 @@ namespace MultiplePages
            {
                if(UserNameET.Text ==""||PasswordET.Text=="")
                {
-                   Toast.MakeText(this, "The Selected Country is : " + CountrySp.SelectedItem, ToastLength.Long).Show();
+                   Toast.MakeText(this, "Please enter username and password : ", ToastLength.Long).Show();
+               }
+               else if(UserNameET.Text == "admin" || PasswordET.Text == "12345678")
+               {
+                   Intent intent = new Intent(this, typeof(Page2));
                }
            };
         }
