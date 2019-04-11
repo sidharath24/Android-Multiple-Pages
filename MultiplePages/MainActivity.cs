@@ -12,17 +12,23 @@ namespace MultiplePages
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-
+        EditText UserNameET, PasswordET; 
+        Button LogInBtn;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-
-            FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fab.Click += FabOnClick;
+            UserNameET = (EditText)FindViewById(Resource.Id.ETUserName);
+            PasswordET = (EditText)FindViewById(Resource.Id.ETPassword);
+            LogInBtn = (Button)FindViewById(Resource.Id.BtnLogin);
+            LogInBtn.Click += delegate
+           {
+               if(UserNameET.Text ==""||PasswordET.Text=="")
+               {
+                   Toast.MakeText(this, "The Selected Country is : " + CountrySp.SelectedItem, ToastLength.Long).Show();
+               }
+           };
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
